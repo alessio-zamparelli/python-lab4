@@ -23,7 +23,7 @@ def start(bot, update):
     bot.sendChatAction(update.message.chat_id, ChatAction.TYPING)
     try:
         con = sqlite3.connect(pathToDb)
-        #print("db correttamente aperto")
+        # print("db correttamente aperto")
         # update.message.reply_text("your user id is: " + str(update.message.from_user.id))
         cur = con.cursor()
         cur.execute(
@@ -90,6 +90,7 @@ def removeTask(bot, update, args):
     except ValueError:
         update.message.reply_text("element not found!")
 
+
 def substringStatement(string, userID):
     statement = "delete * from " + userID + "where"
     words = string.split(" ")
@@ -100,12 +101,11 @@ def substringStatement(string, userID):
     print("da eliminare\n" + statement)
 
 
-
 def removeAllTasks(bot, update):
     global con
     cur = con.cursor()
-    #use the substingStatement function
-    #cur.execute("delete from '%s' " % update.message.from_user.id)
+    # use the substingStatement function
+    # cur.execute("delete from '%s' " % update.message.from_user.id)
     update.message.reply_text("Deleted ALL tasks")
 
 
